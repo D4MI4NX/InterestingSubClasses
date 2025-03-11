@@ -1,6 +1,4 @@
 using HarmonyLib;
-using PlayerRoles;
-using System.Collections.Generic;
 using System.Reflection.Emit;
 using Exiled.API.Features.Pools;
 using Exiled.API.Features;
@@ -32,8 +30,7 @@ namespace InterestingSubClasses.Patches
 
             newInstructions.InsertRange(
                 0,
-                new[]
-                {
+                [
                     new CodeInstruction(OpCodes.Ldarg_1), 
                     new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Player), nameof(Player.Get), new[] { typeof(ReferenceHub) })),
                     new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Scp999LookingAtScp096Patch), nameof(IsScp999))),
@@ -41,7 +38,7 @@ namespace InterestingSubClasses.Patches
 
                     new CodeInstruction(OpCodes.Ldc_I4_0), 
                     new CodeInstruction(OpCodes.Ret) 
-                });
+                ]);
 
             foreach (var instruction in newInstructions)
             {

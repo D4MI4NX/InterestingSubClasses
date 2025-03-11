@@ -3,12 +3,7 @@ using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
 using MEC;
 using PlayerRoles;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using MapEditorReborn.API.Features.Objects;
-using MapEditorReborn.API.Features.Components;
-using Exiled.Events.EventArgs;
 using Exiled.Events.EventArgs.Scp330;
 
 namespace InterestingSubClasses.SubClasses

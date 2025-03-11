@@ -1,13 +1,7 @@
 using Exiled.API.Features;
-using Exiled.API.Features.Roles;
-using Exiled.Events.EventArgs.Server;
-using HarmonyLib;
 using InterestingSubClasses.SubClasses;
 using MEC;
 using PlayerRoles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace InterestingSubClasses
 {
@@ -16,20 +10,20 @@ namespace InterestingSubClasses
         public static Plugin Instance { get; private set; } = null;
         public override string Author => "sexy waltuh";
         public override string Name => "InterestingSubClasses";
-        public override string Prefix => "ISC";
-        public override Version RequiredExiledVersion => new Version(8, 9, 5);
-        public override Version Version => new Version(2, 2, 2);
-        public List<ISCRoleAPI> registeredRoles = new List<ISCRoleAPI>();
-        public Dictionary<Player, string> customRoles = new Dictionary<Player, string>();
-        public Dictionary<Player, CoroutineHandle> activeCoroutines = new Dictionary<Player, CoroutineHandle>();
-        public Dictionary<Player, int> scp330PickupCount = new Dictionary<Player, int>();
-        public Translations _translations = new Translations();
-        private Harmony _harmony;
+        public override string Prefix => "interesting_subclasses";
+        public override Version RequiredExiledVersion => new(9, 5, 1);
+        public override Version Version => new(3, 0, 0);
+        public List<ISCRoleAPI> registeredRoles = [];
+        public Dictionary<Player, string> customRoles = [];
+        public Dictionary<Player, CoroutineHandle> activeCoroutines = [];
+        public Dictionary<Player, int> scp330PickupCount = [];
+        public Translations _translations = new();
+        private HarmonyLib.Harmony _harmony;
 
         public override void OnEnabled()
         {
             Instance = this;
-            _harmony = new Harmony($"com.{Author}.{Name}");
+            _harmony = new HarmonyLib.Harmony($"com.{Author}.{Name}");
             _harmony.PatchAll();
             ServerConsole.AddLog("[ISC] Registering roles...", ConsoleColor.DarkBlue);
             if (Config.SCP999RoleEnabled)

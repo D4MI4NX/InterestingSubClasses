@@ -1,5 +1,6 @@
 using Exiled.API.Enums;
 using Exiled.API.Features;
+using Exiled.API.Features.Doors;
 using MEC;
 using PlayerRoles;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace InterestingSubClasses.SubClasses
             {
                 player.Position = Plugin.Instance.Config.BusXYZ;
             }
+            Door.List.FirstOrDefault(d => d.Type == DoorType.GR18Gate).IsOpen = true;
         }
 
         private IEnumerator<float> GenerateCoins(Player player)
